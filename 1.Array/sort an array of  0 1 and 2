@@ -1,0 +1,30 @@
+/* Given an array of size N containing only 0s, 1s, and 2s; sort the array in ascending order. */
+
+
+ void sort012(int a[], int n)
+    {
+        int i=0,j=n-1,mid=0;
+        
+        while(mid<=j)
+        {
+            if(a[mid]==0)
+            {
+                swap(a[i],a[mid]);
+                i++;
+                mid++;
+            }
+            else if(a[mid]==2)
+            {
+                swap(a[j],a[mid]);
+                j--;
+            }
+            else if(a[mid]==1)
+            {
+                mid++;
+            }
+        }
+    }
+    
+    
+    // Expected Time Complexity: O(N)
+    // Expected Auxiliary Space: O(1)
