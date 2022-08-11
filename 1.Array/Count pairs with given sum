@@ -1,0 +1,17 @@
+/*   Given an array of N integers, and an integer K, find the number of pairs of elements in the array whose sum is equal to K.    */
+
+
+  int getPairsCount(int arr[], int n, int k) {
+        int sum,count = 0;
+        unordered_map<int,int>mp;
+        
+           for(int i =0 ;i<n;i++){
+             sum = k - arr[i];
+             
+             if(mp[sum]){
+                 count = count + mp[sum];
+             }
+             mp[arr[i]]++;
+           }
+        return count ;
+    }
