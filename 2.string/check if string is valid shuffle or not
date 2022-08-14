@@ -1,0 +1,19 @@
+/*    Check if a string is a valid shuffle of two other strings   */
+
+
+bool check(string s1,string s2 , string result ){
+    if(s1.size() + s2.size() != result.size()){
+        return false ;
+    }
+    s1 = s1 + s2 ;
+    
+    sort(s1.begin(),s1.end());
+    sort(result.begin(),result.end());
+    
+    if(s1 != result){
+       return false ;
+    }
+    else{
+       return true ;
+    }
+}
