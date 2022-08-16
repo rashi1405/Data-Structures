@@ -1,0 +1,26 @@
+/*   Given an array of n distinct elements. Find the minimum number of swaps required to sort the array in strictly increasing order. */
+
+
+
+	int minSwaps(vector<int>&nums)
+	{
+	    int key,count= 0 ,i ;
+	    vector<pair<int,int>>temp(nums.size());
+	    
+	    for(i = 0 ; i < nums.size(); i++)
+	       temp[i] = {nums[i],i};
+	       
+	    sort(temp.begin(),temp.end());
+	    
+	    for(i = 0 ; i < temp.size(); i++){
+	       if(temp[i].second==i)
+	           continue ;
+	           
+	       else{
+	           swap(temp[i],temp[temp[i].second]);
+	           i--;
+	           count++;
+	       } 
+	    }
+	    return count;
+	}
