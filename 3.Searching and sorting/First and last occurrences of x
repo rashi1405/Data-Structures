@@ -1,0 +1,32 @@
+/*  Given a sorted array arr containing n elements with possibly duplicate elements, the task is to find indexes of first and last occurrences of an element x in the given array.  */
+
+
+  int min=-1,max=-1 ,i = 0 , j = n-1;
+  
+    for(i = 0 ; i < n ; i++){
+        if(arr[i]==x){
+            min = i ;
+            break;
+        }
+    }
+    
+    for(i = n-1 ; i >=0 ; i--){
+        if(arr[i]==x){
+            max = i ;
+            break;
+        }
+    }
+    vector<int>v ;
+    
+    if(min==-1 && max==-1 ){
+      v.push_back(-1);
+      v.push_back(-1);
+    }
+    
+    else{
+      v.push_back(min);
+      v.push_back(max);
+    }
+    
+    return v;
+    
