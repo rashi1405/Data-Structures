@@ -1,0 +1,46 @@
+
+
+
+/*    Given an array nums[] of size n, construct a Product Array P (of same size n) such that P[i] is equal to the product of all the elements of nums except nums[i].     */
+
+
+
+
+  vector<long long int> productExceptSelf(vector<long long int>& arr, int n) {
+        vector<long long int> v ;
+        long long ans = 1 , count = 0 ;
+        
+        for(int i = 0 ; i < n ; i++){
+            if(arr[i]==0){
+                count++ ;   
+            }
+            else{
+                ans = ans * arr[i];
+            }
+          
+        }
+        
+        // check how many zero it contains 
+      
+        
+        if(count >= 1){
+            if(count > 1){
+                ans = 0;
+            }
+            for(int i = 0 ; i < n ; i++){
+                if(arr[i]==0){
+                   v.push_back(ans);               
+                }
+                else{
+                    v.push_back(0);
+                }
+            }
+            return v ;
+        }
+        for(int i = 0 ; i < n ; i++){
+            ans = ans / arr[i];
+            v.push_back(ans);
+            ans = ans * arr[i];
+        }
+    return v ;
+    }
