@@ -1,0 +1,59 @@
+/*   Given two decimal numbers represented by two linked lists of size N and M respectively. The task is to return a linked list that represents the sum of these two numbers.  */
+
+
+struct Node* reverse (Node* head)
+{
+    Node* prev = NULL;
+    Node* temp = head ;
+    Node* ahead = temp->next;
+    while(temp)
+    {
+        ahead = temp->next;
+        temp->next = prev ;
+        prev = temp;
+        temp = ahead;
+    }
+    return prev;
+} 
+
+  struct Node* addTwoLists(struct Node* first, struct Node* second)
+  {
+       Node *t1 = first ;
+       Node *t2 = second ;
+       Node *res,*temp;
+       
+       t1 = reverse(first);
+       t2 = reverse(second);
+       
+       int sum = 0 , car=0;
+       while(t1 || t2)
+       {
+           sum = car ;
+           
+           if(t1)
+           {
+               sum += t1->data;
+               t1=t1->next;
+           }
+           if(t2)
+           {
+               sum+=t2->data;
+               t2=t2->next;
+           }
+           car = sum/10;
+          sum = sum%10;
+        temp = new Node(sum);
+         temp->next = res ;
+         res = temp;
+   
+       }
+     if(car!=0)
+       {
+           temp = new Node(car);
+   
+           temp->next = res;
+           res = temp;
+       }
+ 
+       return res;
+    }
