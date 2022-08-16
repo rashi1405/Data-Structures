@@ -1,0 +1,48 @@
+/* A number N is represented in Linked List such that each digit corresponds to a node in linked list. You need to add 1 to it.  */
+
+
+
+Node* reverse (Node* head)
+{
+    Node* temp = head;
+    Node* prev = NULL;
+    Node* ahead = temp->next;
+    
+    while(temp)
+    {
+        ahead = temp->next;
+        temp->next = prev ;
+        prev = temp;
+        temp = ahead ;
+    }
+    return prev;
+}
+
+
+ Node* addOne(Node *head) 
+    {
+        Node* t1 = reverse (head);
+        Node* temp = t1;
+        Node* cur;
+        int car = 0,sum=1;
+        while(t1)
+        {
+            sum = sum + t1->data + car;
+            car = sum/10;
+            sum = sum%10;
+            
+            t1->data = sum;
+            t1=t1->next;
+            sum = 0;
+        }
+        temp = reverse(temp);
+        if(car!=0)
+        {
+            cur = new Node(car);
+            cur->next=temp;
+            temp = cur;
+        }
+       
+        return temp;
+      
+    }
