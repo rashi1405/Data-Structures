@@ -1,0 +1,26 @@
+/*    Given a linked list of N nodes. The task is to check if the linked list has a loop. Linked list can contain self loop.    */
+
+
+
+  bool detectLoop(Node* head)
+    {
+        Node *rab,*tur;
+        tur = rab = head ;
+        
+        while(1)
+        {
+            tur = tur->next;
+            rab = rab->next;
+            
+            if(rab==NULL)
+              return false ;
+              
+            rab = rab->next;
+            
+            if(tur==rab && tur!=NULL)
+             return true ;
+             
+            if(tur==NULL || rab==NULL)
+             return false ;
+        }
+  }
