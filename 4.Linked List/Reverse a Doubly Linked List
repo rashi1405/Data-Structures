@@ -1,0 +1,25 @@
+/*   Given a doubly linked list of n elements. The task is to reverse the doubly linked list.    */
+
+
+
+Node* reverseDLL(Node * head)
+{
+    int count=1;
+    Node*front = head ;
+    Node* tail = head ;
+    while(tail->next!=NULL)
+    {
+        tail=tail->next;
+        count++;
+    }
+  
+    count = count / 2 ;
+    while(count--)
+    {
+        swap(front->data,tail->data);
+        front=front->next;
+        tail=tail->prev;
+        
+    }
+    return head ;
+}
