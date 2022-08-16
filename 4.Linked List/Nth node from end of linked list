@@ -1,0 +1,19 @@
+/*   Given a linked list consisting of L nodes and given a number N. The task is to find the Nth node from the end of the linked list.   */
+
+
+
+ Node* front=head, *back=head;
+      
+      while(n--) {
+          if (front!=NULL) front=front->next;
+          else return -1;
+      }
+      
+      if(front==NULL) return head->data;
+      
+      while(front->next!=NULL) {
+          front=front->next;
+          back=back->next;
+      }
+      
+      return back->next->data;
