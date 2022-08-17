@@ -1,0 +1,23 @@
+/*   Given an integer K and a queue of integers, we need to reverse the order of the first K elements of the queue, leaving the other elements in the same relative order.  */
+
+
+
+queue<int> modifyQueue(queue<int> q, int k) {
+    stack<int>s;
+    queue<int>tmp;
+    
+    while(k--){
+        int ele = q.front();
+        s.push(ele);
+        q.pop();
+    }
+    while(!s.empty()){
+        tmp.push(s.top());
+        s.pop();
+    }
+    while(!q.empty()){
+        tmp.push(q.front());
+        q.pop();
+    }
+    return tmp;
+}
