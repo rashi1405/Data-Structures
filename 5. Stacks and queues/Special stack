@@ -1,0 +1,46 @@
+/*   Design a data-structure SpecialStack that supports all the stack operations like push(), pop(), isEmpty(), isFull() and an additional operation getMin() which should return minimum element from the SpecialStack. Your task is to complete all the functions, using stack data-Structure.
+O(N) for getMin, O(1) for remaining all 4 functions.    */
+
+
+
+void push(stack<int>& s, int a){
+	s.push(a);
+}
+
+bool isFull(stack<int>& s,int n){
+	if(s.size()==n)
+	return true;
+	else
+    return false;
+}
+
+bool isEmpty(stack<int>& s){
+	if(s.empty())
+	return true;
+	else
+    return false;
+}
+
+int pop(stack<int>& s){
+    if(s.empty())
+    return -1;
+    
+    int k = s.top();
+	s.pop();
+	return k;
+}
+
+int getMin(stack<int>& s){
+    int min = s.top();
+    s.pop();
+    
+    while(!s.empty())
+    {
+        if(s.top() < min)
+        {
+            min = s.top();
+        }
+        s.pop();
+    }
+    return min;
+}
