@@ -1,0 +1,36 @@
+
+/*  Given a binary tree , Find Bottom View of Binary Tree */
+
+
+  vector <int> bottomView(Node *root) {
+        vector<int>v;
+        
+        if(root==NULL)
+          return v;
+          
+        queue<pair<Node*,int>>q;
+        map<int,int>mpp;
+        
+        q.push({root,0});
+        
+        while(!q.empty()){
+            auto it = q.front();
+            q.pop();
+            Node* temp = it.first;
+            int line = it.second;
+            
+            mpp[line] = temp->data;
+            
+            if(temp->left){
+                q.push({temp->left,line-1});
+            }
+            if(temp->right){
+                q.push({temp->right,line+1});
+            }
+        }
+        
+        for(auto it : mpp){
+            v.push_back(it.second);
+        }
+        return v;
+    }
