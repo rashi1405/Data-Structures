@@ -1,0 +1,32 @@
+/*   Given a stack, the task is to sort it such that the top of the stack has the greatest element.    */
+
+
+
+void insert_right(stack<int> &s , int x){
+    if(s.size()==0 or s.top() < x){
+        s.push(x);
+    }
+    
+    else{
+        int a = s.top();
+        s.pop();
+        insert_right(s,x);
+        s.push(a);
+    }
+}
+
+void reverse(stack<int> &s){
+    if(s.size() > 0){
+        int x = s.top();
+        s.pop();
+        
+        reverse(s);
+        insert_right(s,x);
+    }
+}
+
+
+void SortedStack :: sort()
+{
+     reverse(s);
+}
