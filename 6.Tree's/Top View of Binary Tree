@@ -1,0 +1,42 @@
+/*     Given a binary tree, find its Top View    */
+
+
+struct Node
+{
+    int data;
+    Node* left;
+    Node* right;
+};
+
+ vector<int> topView(Node *root)
+    {
+        vector<int>v;
+        queue<pair<Node*,int>>q;
+        map<int,int>mp;
+        
+        if(root==NULL)
+          return v ;
+          
+        q.push({root,0});
+        
+        while(!q.empty()){
+            auto it = q.front();
+            Node* temp = it.first;
+            int line = it.second;
+            q.pop();
+            if(mp.find(line) == mp.end())
+              mp[line] = temp->data;
+              
+            if(temp->left)
+              q.push({temp->left,line-1});
+              
+            if(temp->right)
+              q.push({temp->right,line+1});
+               
+        }
+        
+        for(auto it : mp){
+            v.push_back(it.second);
+        }
+        return v;
+    }
