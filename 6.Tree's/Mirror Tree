@@ -1,0 +1,20 @@
+/*  Given a Binary Tree, convert it into its mirror.  */
+
+
+ void mirror(Node* node) {
+        
+        if(!node)
+        {
+            return;
+        }
+        
+        Node* one = node->left;
+        Node* two = node->right;
+        
+        node->left = two;
+        node->right = one ;
+        
+        mirror(node->left);
+        mirror(node->right);
+        
+    }
