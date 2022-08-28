@@ -1,0 +1,16 @@
+/*  Given a Binary search Tree that contains positive integer values greater then 0. The task is to complete the function isDeadEnd which returns true if the BST contains a dead end else returns false. Here Dead End means, we are not able to insert any element after that node.  */
+
+
+bool check(Node* root , int minn , int maxx){
+    if(root==NULL)
+        return false;
+        
+    if(minn == maxx)
+        return true ;
+     
+    return check(root->left , minn , root->data-1) or check(root->right , root->data+1 , maxx);
+}
+bool isDeadEnd(Node *root)
+{
+    return check(root , 1 , INT_MAX);
+}
