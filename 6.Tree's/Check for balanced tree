@@ -1,0 +1,26 @@
+/*  Given a binary tree, find if it is height balanced or not. 
+A tree is height balanced if difference between heights of left and right subtrees is not more than one for all nodes of tree.    */
+
+
+  bool check = true;
+    int height(Node *temp){
+        if(temp==NULL){
+            return 0;
+        }    
+        int lh = height(temp->left);
+        int rh = height(temp->right);
+        
+        if(abs(lh-rh) > 1 )
+           check = false ;
+        
+        return 1 + max(lh,rh) ;
+    }
+    
+    bool isBalanced(Node *root)
+    {
+        if(!root)
+            return 0;
+        
+        int ans = height(root);
+        return check;
+   }
