@@ -1,0 +1,43 @@
+/*   Given a Binary Tree, check if all leaves are at same level or not.  */
+
+
+
+  bool check(Node *root)
+    {
+        vector<int>v;
+        queue<Node*>q ;
+         
+        int level = 1;
+        q.push(root);
+        
+        while(!q.empty())
+        {
+            int len = q.size();
+            while(len--){
+                Node* temp = q.front();
+         
+                if(!temp->left && !temp->right)  {
+                    v.push_back(level);
+                }
+                else{
+                   if(temp->left)
+                    q.push(temp->left);
+               
+                   if(temp->right)
+                    q.push(temp->right);
+                      
+                }
+              
+                q.pop();
+            }
+            level++;
+        }
+        
+        for(int i = 0 ; i < v.size()-1 ; i++){
+            if(v[i] != v[i+1])
+                return false;
+        }
+        return true;
+        
+      
+    }
