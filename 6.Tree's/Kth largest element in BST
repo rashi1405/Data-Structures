@@ -1,0 +1,23 @@
+/*  Given a Binary search tree. Your task is to complete the function which will return the Kth largest element without doing any modification in Binary Search Tree.  */
+
+
+
+ vector<int>v;
+    
+    void solve(Node* root){
+        if(root){
+            solve(root->left);
+            v.push_back(root->data);
+            solve(root->right);
+        }
+    }
+    int kthLargest(Node *root, int K)
+    {
+        if(!root)
+           return 0;
+           
+        solve(root);
+        int len = v.size();
+        
+        return v[len-K];
+    }
