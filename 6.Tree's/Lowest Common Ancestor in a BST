@@ -1,0 +1,27 @@
+/*  Given a Binary Search Tree (with all values unique) and two node values. Find the Lowest Common Ancestors of the two nodes in the BST.  */
+
+
+
+Node* LCA(Node *root, int n1, int n2)
+{
+    Node* temp = root;
+    
+    if(!root)
+       return root;
+    
+    while(temp)
+    {
+       
+       if(temp->data > n1 && temp->data > n2)
+        {
+            temp = temp->left;
+        }
+        else if(temp->data < n1 && temp->data < n2)
+        {
+            temp = temp->right;
+        }
+        else 
+            return temp;
+    }
+    return root;
+}
